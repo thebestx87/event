@@ -15,6 +15,7 @@
 </head>
 <body>
   <header>
+    <div class="container">
     <div class="logo">TRIP</div>
     <nav>
       <ul>
@@ -26,6 +27,7 @@
       </ul>
     </nav>
     <div class="menu-toggle">&#9776;</div>
+    </div>
   </header>
 
   <!-- Swiper 슬라이드 (Hero 위) -->
@@ -39,18 +41,34 @@
   </div>
 
   <section class="hero">
+    <div class="container">
     <div class="overlay">
       <h1>당신의 특별한 여행을 TRIP과 함께</h1>
       <p>전 세계 어디든, 원하는 여행을 찾아보세요!</p>
       <a href="#" class="btn">지금 떠나기</a>
     </div>
+    </div>
   </section>
+  <section class="discover">
+  <input type="search" placeholder="어디로 떠나고 싶나요?" class="search-bar">
+  <div class="swiper discover-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/card1.jpg" alt=""><span>바다 휴양지</span></div>
+      <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqiaqBvgdFJQjJRT4ktRzvIaUkn5mMTrBaTEJKyWyBnJf9l2PZ1boCjsP1qt2ksr8OYq-XWTrU6O_PwB7jDrecUFhijcrR1xXQuwWOklMS3XCgiGghGpLv5kcHaSPV4JkUVL6f7gJlP1Wg=s680-w680-h510-rw" alt=""><span>오래된 유적지</span></div>
+       <div class="swiper-slide"><img src="images/card2.jpg" alt=""><span>힐링감성패키지</span></div>
+        <div class="swiper-slide"><img src="images/card2.jpg" alt=""><span>남녀노소 행복패키지</span></div>
+      ...
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
 
   <section class="destinations">
     <h2>인기 여행지</h2>
     <div class="cards">
       <div class="card">
-        <img src="images/paris.jpg" alt="파리">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npaBF-GjJABk4vaiMQFhbma4IxXt6QWUbiwM3SwVbkY_Wyjk5rZY7BvjcXutlOGMu2kFHJBIZb6o8pLZzy6DMo2gRrvyYYMOpimAHTsIQgVTgMZeI1HNlHouM6II_VTNqwhe-PJ0wU-wLk=w260-h175-n-k-no" alt="파리">
         <h3>파리</h3>
         <p>낭만의 도시, 에펠탑과 세느강의 야경</p>
       </div>
@@ -60,7 +78,7 @@
         <p>에메랄드빛 바다와 힐링 리조트</p>
       </div>
       <div class="card">
-        <img src="images/newyork.jpg" alt="뉴욕">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/9d/74/9f/photo0jpg.jpg?w=700&h=400&s=1" alt="뉴욕">
         <h3>뉴욕</h3>
         <p>잠들지 않는 도시의 활기와 매력</p>
       </div>
@@ -68,8 +86,14 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 TRIP. All rights reserved.</p> <a href="privacy.html" class="footer-btn">개인정보처리방침</a>
-  <a href="terms.html" class="footer-btn">이용약관</a>
+    <div class="container">
+     <a href="privacy.html" class="footer-btn">개인정보처리방침</a><a href="terms.html" class="footer-btn">이용약관</a>
+  <p>&copy; 2025 TRIP. All rights reserved.</p>
+  <p>
+   TRIP LLC는 당사 사이트 및 앱에서 광고된 가격으로 이용할 수 있음을 보장하지 않습니다. 표시 가격으로 이용 시 특정 기간 투숙해야 하거나 사용 제한일, 자격 또는 기타 적용되는 제한 사항이 있을 수 있습니다. TRIP LLC는 트립이 소유하거나 운영하지 않는 외부 웹사이트의 콘텐츠에 대해 책임지지 않습니다.
+
+TRIP LLC는 예약 대행사 또는 투어 운영자가 아닙니다. 트립 파트너 사이트 중 한 곳에서 예약할 경우 모든 요금이 해당 사이트에 명시되어 있는지 반드시 확인하세요.
+  </p></div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
