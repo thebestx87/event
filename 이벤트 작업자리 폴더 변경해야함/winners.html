@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>당첨자 발표</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 1em;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #4fc3f7;
+      margin-bottom: 1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8em;
+      text-align: center;
+    }
+    th {
+      background-color: #4fc3f7;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+    footer {
+      margin-top: 3em;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 당첨자 발표 🎉</h1>
+
+  <p>당첨되신분들 축하드립니다.</p>
+  귀하의 연락
+  
+
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>전화번호</th>
+      </tr>
+    </thead>
+    <tbody id="winner-list">
+      <!-- JS가 채울 자리 -->
+    </tbody>
+  </table>
+
+  <footer>
+   <p> © 2025TRIP 여행이벤트</p> <a href="rules.html">이벤트 규약</a> 
+  </footer>
+
+  <script>
+  const names = [
+    "김X숙", "이X윤", "박X훈", "최X지", "정X은",
+    "한X우", "윤X후", "강X린", "오X훈", "조X늘"
+  ];
+
+  function generatePhone() {
+    const front = Math.floor(100 + Math.random() * 900); // 3자리
+    const middle = Math.floor(1000 + Math.random() * 9000); // 4자리
+    const back = Math.floor(1000 + Math.random() * 9000); // 4자리
+    return `010-${middle}-${back}`; // 이 부분은 그대로 둬!
+  }
+
+  const tbody = document.getElementById('winner-list');
+
+  names.forEach((name, idx) => {
+    const tr = document.createElement('tr');
+    const numTd = document.createElement('td');
+    const nameTd = document.createElement('td');
+    const phoneTd = document.createElement('td');
+
+    numTd.textContent = idx + 1;
+    nameTd.textContent = name;
+
+    if(idx === 0) {
+      // 첫번째 당첨자만 뒷자리 9965 고정
+      // 여기는 원래 네가 잘 해놨으니 그대로!
+      phoneTd.textContent = `010-****-9965`;
+    } else {
+      // 짜잔! 여기가 마법이 일어나는 곳!
+      const fullPhone = generatePhone(); // 일단 '010-1234-5678' 이런 식으로 전체 번호를 받아와
+      const parts = fullPhone.split('-'); // '-' 기준으로 쪼개면 ['010', '1234', '5678'] 이렇게 배열이 돼!
+      const maskedPhone = `010-****-${parts[2]}`; // 뿅! 두 번째 부분(middle)만 ****로 바꾸고, 세 번째 부분(back)은 그대로 가져와서 합쳐!
+      phoneTd.textContent = maskedPhone; // 그리고 화면에 표시!
+    }
+
+    tr.appendChild(numTd);
+    tr.appendChild(nameTd);
+    tr.appendChild(phoneTd);
+
+    tbody.appendChild(tr);
+  });
+</script>
