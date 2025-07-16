@@ -1,250 +1,242 @@
-body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: #333;
-  background-color:black;
-}
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+
+* {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 header {
+  padding: 20px 0;
+  background: #000;
+  border-bottom: 1px solid #222;
+  position: relative;
+}
+
+header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background: black;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-header .container{display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 20px;
-}
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  color :white;
 
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  gap: 20px;
+  list-style: none;
   padding: 0;
-  margin: 0;
+  gap: 24px;
 }
 
-nav a {
+nav ul li a {
   text-decoration: none;
-  color: white
+  color: #fff;
+  font-weight: 500;
 }
 
 .menu-toggle {
   display: none;
-  font-size: 1.5em;
+  position: absolute;
+  right: 16px;
+  top: 24px;
+  font-size: 2rem;
+  color: #fff;
   cursor: pointer;
-  color: white;
-  margin-left: auto;
-  padding-left: 16px;
 }
-
+a {
+  color: #fff;
+  text-decoration: none;
+}
 .swiper {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  padding: 20px 0;
-  box-sizing: border-box;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .swiper-slide img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  border-radius: 10px;
-  
+  border: none;
+  outline: none;
+}
+
+.swiper-slide {
+  border: none !important;
 }
 
 .hero {
-  position: relative;
-  background: url('../images/og-image.jpg') center/cover no-repeat;
-  height: 400px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-
-
-}
-
-/* 양옆 여백을 위한 기본 박스 스타일 */
-.swiper, .discover-swiper {
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-/* 서치바 */
-.search-bar {
-  display: block;
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-/* 카드 슬라이드 스타일 예쁘게 */
-.discover-swiper .swiper-slide {
-  width: auto;
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.discover-swiper .swiper-slide img {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-}
-
-.discover-swiper .swiper-slide span {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 40px;
+  margin: 40px 0;
 }
 
 .hero h1 {
-  font-size: 2em;
-  margin: 0.5em 0;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
 }
 
-.discover {
-  padding: 20px;
+.hero p {
+  font-size: 1rem;
+  color: #ccc;
 }
-.search-bar {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-}
-.discover-swiper .swiper-slide {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.discover-swiper .swiper-slide img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-.discover-swiper .swiper-slide span {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-
-
 
 .btn {
   display: inline-block;
-  margin-top: 1em;
-  padding: 0.5em 1.5em;
-  background: #0088cc;
-  color: white;
-  border-radius: 5px;
+  border: 1px solid #fff;
+  padding: 12px 24px;
   text-decoration: none;
+  color: #fff;
+  margin-top: 16px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.search-bar {
+  display: block;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.discover-swiper {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 551px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.discover-swiper .swiper-slide {
+  text-align: center;
+  padding: 10px;
+  border: none;
+}
+
+.discover-swiper img {
+  width: 100%;
+  border-radius: 6px;
+  border: none;
 }
 
 .destinations {
-  padding: 40px 20px;
+  padding: 40px 0;
   text-align: center;
 }
-h2{color :white;}
+
 .cards {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
 }
 
 .card {
-  width: 300px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #fff;
+  color: #000;
+  width: 250px;
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  text-align: left;
+  border: none;
 }
 
 .card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+.card h3, .card p {
+  padding: 0 16px;
 }
 
 footer {
-  background: black;
-  padding: 20px 20px 20px 20px ;
-  text-align: left;
-  font-size: 0.9em;
-  color: white;
-  margin-bottom: 50px;
+  background: #fff;
+  color: #000;
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 0.9rem;
 }
-
 
 .footer-btn {
-  display:flex;
-  justify-content: flex-start;
-  gap:10px;
-  margin-top: 10xp;
-  flex-wrap: wrap;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
+  color: #000;
+  margin-right: 12px;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
+  font-weight: bold;
 }
-.homebtn{ color: white; 
-  text-decoration: none;}
 
-
-
+/* 반응형 - 모바일에서 햄버거 메뉴 */
 @media (max-width: 768px) {
   nav ul {
-    display: none;
     flex-direction: column;
+    gap: 12px;
+    display: none;
+    background-color: #000;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    padding: 16px;
+    border: 1px solid #fff;
   }
+
   .menu-toggle {
     display: block;
   }
-   main {
-    padding: 10px;
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
   }
-  h1 {
-    font-size: 1.5rem;
+
+  .swiper,
+  .discover-swiper {
+    width: 95%;
   }
-  h2 {
+
+  .search-bar {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    width: 80%;
     font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
   }
 }
