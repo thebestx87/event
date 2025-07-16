@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
+  background-color:black;
 }
 
 header {
@@ -9,13 +10,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background: #ffffff;
+  background: black;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
   font-size: 1.5em;
   font-weight: bold;
+  color :white;
+
 }
 
 nav ul {
@@ -28,13 +31,14 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: white
 }
 
 .menu-toggle {
   display: none;
   font-size: 1.5em;
   cursor: pointer;
+  color: white;
 }
 
 .swiper {
@@ -62,6 +66,8 @@ nav a {
   align-items: center;
   justify-content: center;
   text-align: center;
+
+
 }
 
 .overlay {
@@ -88,7 +94,7 @@ nav a {
   padding: 40px 20px;
   text-align: center;
 }
-
+h2{color :white;}
 .cards {
   display: flex;
   justify-content: center;
@@ -111,11 +117,36 @@ nav a {
 }
 
 footer {
-  background: #f8f8f8;
-  padding: 20px;
-  text-align: center;
+  background: black;
+  padding: 20px 20px 20px 20px ;
+  text-align: left;
   font-size: 0.9em;
-  color: #777;
+  color: white;
+}
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display:flex;
+  justify-content: flex-start;
+  gap:10px;
+  margin-top: 10xp;
+  flex-wrap: wrap;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.footer-btn:hover {
+  background-color: #006da4;
 }
 
 @media (max-width: 768px) {
@@ -125,5 +156,14 @@ footer {
   }
   .menu-toggle {
     display: block;
+  }
+   main {
+    padding: 10px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1rem;
   }
 }
