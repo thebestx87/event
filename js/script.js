@@ -19,12 +19,18 @@ new Swiper('.swiper', {
 
 // 하단 추천 슬라이드 (카드 느낌)
 new Swiper('.discover-swiper', {
-  slidesPerView: 'auto',
-  centeredSlides: true,
-  spaceBetween: 20,
+  slidesPerView: 1, // 💡 하나만 꽉 차게 보여줌
   loop: true,
+  spped: 300,
+  spaceBetween: 0,
   pagination: {
     el: '.swiper-pagination',
     clickable: true
   }
+});
+
+// 메뉴토글
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const navList = document.querySelector('nav ul');
+  navList.classList.toggle('show'); // show 클래스 토글
 });
