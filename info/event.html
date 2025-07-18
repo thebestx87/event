@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 당첨자 발표 - TRIP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .info-subnav {
+      background: #1a1a1a;
+      padding: 16px 0;
+      border-bottom: 1px solid #333;
+    }
+    .info-subnav .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .info-subnav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .info-subnav a:hover {
+      background: #333;
+      color: #fff;
+    }
+    .info-subnav a.active {
+      background: #fff;
+      color: #111;
+    }
+
+    .event-board {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a1a;
+    }
+
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid #333;
+      text-align: left;
+    }
+
+    th {
+      background: #222;
+      font-weight: bold;
+    }
+
+    td a {
+      color: #0af;
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- 서브 네비 -->
+  <div class="info-subnav">
+    <div class="container">
+      <a href="index.html">1:1 문의</a>
+      <a href="qna.html">Q&A</a>
+      <a href="event.html" class="active">이벤트 발표</a>
+    </div>
+  </div>
+
+  <main class="event-board">
+    <h2>이벤트 당첨자 발표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>날짜</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tbody id="eventList">
+  <!-- 여기에 JS로 랜덤 게시물 채워짐 -->
+</tbody>
+      </tbody>
+      </table>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/script.js"></script>
+  
+  <script>
+    
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        // 하나만 열리게 하고 싶다면 아래 주석 제거
+        items.forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+    window.addEventListener("DOMContentLoaded", () => {
+  // 헤더
+  if (document.getElementById('header')) {
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+
+        // 햄버거 메뉴 작동!
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+  }
+
+  // 푸터
+  if (document.getElementById('footer')) {
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  }
+});
+
+  const eventPosts = [
+    { title: "🎉 [TRIP] 6월 베스트 후기 이벤트 당첨자 발표", date: "2025-07-01", link: "winner-detail.html", real: true },
+    { title: "[이벤트] 당첨자 발표 - 여름휴가 사전 예약 이벤트", date: "2025-06-25" },
+    { title: "[TRIP] 퀴즈 이벤트 참여자 명단", date: "2025-06-18" },
+    { title: "[TRIP] 항공권 할인 추첨 결과 안내", date: "2025-06-11" },
+    { title: "[이벤트 종료] 5월 여행 후기 이벤트 결과", date: "2025-06-01" },
+    { title: "[TRIP] SNS 공유 이벤트 발표", date: "2025-05-27" },
+    { title: "봄맞이 할인권 추첨 결과", date: "2025-05-21" },
+    { title: "TRIP 후기왕 이벤트 당첨 안내", date: "2025-05-10" },
+    { title: "[TRIP] 퀴즈 이벤트 2차 당첨자", date: "2025-04-30" },
+    { title: "이벤트 후기 댓글 당첨자 발표", date: "2025-04-17" },
+    { title: "TRIP 회원 감사 선물 이벤트", date: "2025-04-01" }
+  ];
+
+  // 게시글 섞기
+  const shuffled = eventPosts.sort(() => 0.5 - Math.random());
+
+  // 최대 10~15개만 뿌리기
+  const count = Math.floor(Math.random() * 6) + 10; // 10~15개
+  const displayPosts = shuffled.slice(0, count);
+
+  // 진짜 당첨 링크 있는 걸 제일 위로 정렬
+  displayPosts.sort((a, b) => (b.real === true ? 1 : -1));
+
+  const tbody = document.getElementById('eventList');
+
+  displayPosts.forEach((post, index) => {
+    const tr = document.createElement('tr');
+
+    const tdNum = document.createElement('td');
+    tdNum.textContent = index + 1;
+
+    const tdTitle = document.createElement('td');
+    if (post.real) {
+      tdTitle.innerHTML = `<a href="${post.link}">${post.title}</a>`;
+    } else {
+      tdTitle.textContent = post.title;
+    }
+
+    const tdDate = document.createElement('td');
+    tdDate.textContent = post.date;
+
+    tr.appendChild(tdNum);
+    tr.appendChild(tdTitle);
+    tr.appendChild(tdDate);
+    tbody.appendChild(tr);
+  });
+
+  </script>
+</body>
+</html>

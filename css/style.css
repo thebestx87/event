@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #000;
@@ -113,6 +116,17 @@ a {
   color: #000;
 }
 
+/* 통통글자튀기 */
+
+
+
+.swiper-slide {
+  position: relative; /* 반드시 있어야 함! */
+}
+
+
+
+
 .search-bar {
   display: block;
   width: 90%;
@@ -182,11 +196,12 @@ a {
 }
 
 footer {
-  background: #fff;
-  color: #000;
-  padding: 32px 16px;
+  background: #000000;
+  color:white;
+  padding: 10px 5px;
   text-align: center;
   font-size: 0.9rem;
+  border-top: 1px solid #444;
 }
 
 .footer-btn {
@@ -247,7 +262,7 @@ footer {
   }
    .swiper {
     width: 100%;
-    height: auto; /* 높이 자동 조정 */
+    height: 551px; /* 높이 자동 조정 */
     aspect-ratio: 16 / 9; /* 또는 955 / 551 */
   }
 
@@ -363,4 +378,112 @@ footer {
 .promo-card p {
   font-size: 0.95rem;
   color: #ccc;
+}
+/* 인포 */
+.info-subnav {
+  background: #1a1a1a;
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+}
+.info-subnav .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.info-subnav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.info-subnav a:hover {
+  background: #333;
+  color: #fff;
+}
+.info-subnav a.active {
+  background: #fff;
+  color: #111;
+}
+/* 시즌이벤트 css */
+.season-banner {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.season-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none; /* 클릭 막기 */
+  user-select: none;    /* 텍스트 선택 방지 */
+}
+
+
+/* 카드섹션 */
+
+.h2{text-align: center;
+  color: #fff;
+  font-size: 1.5rem;;
+
+}
+.best-products {
+  background: black;
+  padding: 60px 20px;
+  color: #111;
+}
+
+.best-products h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.best-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+.best-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: gold;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.desc {
+  padding: 16px;
+}
+
+.desc h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.desc p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 0 10px;
+}
+
+.desc strong {
+  font-size: 1.1rem;
+  color: #000;
 }

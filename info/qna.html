@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자주 묻는 질문 - TRIP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .info-subnav {
+      background: #1a1a1a;
+      padding: 16px 0;
+      border-bottom: 1px solid #333;
+    }
+    .info-subnav .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .info-subnav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .info-subnav a:hover {
+      background: #333;
+      color: #fff;
+    }
+    .info-subnav a.active {
+      background: #fff;
+      color: #111;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #333;
+    }
+
+    .faq-question {
+      padding: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #181818;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: #222;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: #1c1c1c;
+      padding: 0 20px;
+      color: #ccc;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 16px 20px;
+      max-height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- 서브 네비게이션 -->
+  <div class="info-subnav">
+    <div class="container">
+      <a href="index.html">1:1 문의</a>
+      <a href="qna.html" class="active">Q&A</a>
+      <a href="event.html">이벤트</a>
+    </div>
+  </div>
+
+  <main class="faq-container">
+    <h2>자주 묻는 질문</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">예약 후 일정 변경이 가능한가요?</div>
+      <div class="faq-answer">여행 일정 변경은 출발 7일 전까지 가능하며, 항공권 및 숙소에 따라 수수료가 발생할 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">결제는 어떤 방법으로 가능한가요?</div>
+      <div class="faq-answer">신용카드, 실시간 계좌이체, 카카오페이, 네이버페이 등 다양한 수단을 지원합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">취소 시 환불은 얼마나 걸리나요?</div>
+      <div class="faq-answer">카드 결제는 보통 3~5일, 계좌이체는 영업일 기준 2일 내 환불됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">예약 내역은 어디서 확인하나요?</div>
+      <div class="faq-answer">로그인 후 마이페이지 → 예약내역에서 모든 여행 예약 정보를 확인하실 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">회원 탈퇴는 어떻게 하나요?</div>
+      <div class="faq-answer">마이페이지 > 회원정보 수정 > 탈퇴하기 버튼을 통해 직접 탈퇴할 수 있습니다.</div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/script.js"></script>
+  
+  <script>
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        // 하나만 열리게 하고 싶다면 아래 주석 제거
+        items.forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+    window.addEventListener("DOMContentLoaded", () => {
+  // 헤더
+  if (document.getElementById('header')) {
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+
+        // 햄버거 메뉴 작동!
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+  }
+
+  // 푸터
+  if (document.getElementById('footer')) {
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  }
+});
+
+  </script>
+</body>
+</html>

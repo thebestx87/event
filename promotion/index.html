@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로모션 - TRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .promo-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .promo-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .promo-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .promo-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .promo-info {
+      padding: 16px;
+    }
+
+    .promo-info h3 {
+      margin-top: 0;
+    }
+
+    .promo-info p {
+      font-size: 0.95rem;
+      margin: 8px 0;
+    }
+
+    .promo-info span {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    .promo-info .btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #fff;
+      color: #111;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <h1>🔥 지금 진행 중인 프로모션</h1>
+  <div class="promo-grid" id="promoContainer"></div>
+  <div id="footer"></div>
+<script src="../js/script.js"></script>
+
+  <script>
+    const images = [
+      "https://source.unsplash.com/400x300/?paris",
+      "https://source.unsplash.com/400x300/?beach",
+      "https://source.unsplash.com/400x300/?tokyo",
+      "https://source.unsplash.com/400x300/?hotel",
+      "https://source.unsplash.com/400x300/?desert",
+      "https://source.unsplash.com/400x300/?maldives",
+      "https://source.unsplash.com/400x300/?thailand",
+      "https://source.unsplash.com/400x300/?mountain",
+      "https://source.unsplash.com/400x300/?korea",
+      "https://source.unsplash.com/400x300/?ocean"
+    ];
+
+    const promos = [
+      { title: "여름 특가 세일", desc: "예약 시 20% 할인 + 얼리버드 사은품 증정!", date: "~ 2025.08.31까지" },
+      { title: "몰디브 리조트 초특가", desc: "한정 수량! 5성급 리조트 특가 프로모션", date: "~ 2025.08.20까지" },
+      { title: "제주도 항공 포함 패키지", desc: "항공+호텔+렌터카 모두 포함된 초가성비", date: "~ 2025.08.15까지" },
+      { title: "프랑스 감성투어", desc: "파리 야경 포함 유럽 감성 여행 혜택 적용!", date: "~ 2025.09.10까지" },
+      { title: "방콕&파타야 올인클루시브", desc: "전 일정 식사 포함! 쇼핑 옵션 없음!", date: "~ 2025.08.05까지" },
+      { title: "사막 속 럭셔리 두바이", desc: "사막 사파리+부르즈칼리파 포함 패키지", date: "~ 2025.09.01까지" },
+      { title: "국내산 청정 계곡 캠핑패키지", desc: "자연 속에서 힐링, 아이들과 함께 떠나자!", date: "~ 2025.07.31까지" },
+      { title: "도쿄 먹방 투어", desc: "맛집 투어 & 온천 포함 힐링 일정", date: "~ 2025.08.10까지" }
+    ];
+
+    const promoContainer = document.getElementById("promoContainer");
+
+    promos.forEach((promo, i) => {
+      const img = images[i % images.length];
+      promoContainer.innerHTML += `
+        <div class="promo-card">
+          <img src="${img}" alt="프로모션 이미지">
+          <div class="promo-info">
+            <h3>${promo.title}</h3>
+            <p>${promo.desc}</p>
+            <span>${promo.date}</span><br>
+            <a href="#" class="btn">자세히 보기</a>
+          </div>
+        </div>
+      `;
+    });
+     fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>

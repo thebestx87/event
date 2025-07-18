@@ -29,8 +29,51 @@ new Swiper('.discover-swiper', {
   }
 });
 
-// 메뉴토글
-document.querySelector('.menu-toggle').addEventListener('click', function () {
-  const navList = document.querySelector('nav ul');
-  navList.classList.toggle('show'); // show 클래스 토글
+
+const bestSwiper = new Swiper('.best-swiper', {
+  slidesPerView: 1.2,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2.5,
+    },
+    1024: {
+      slidesPerView: 3.5,
+    },
+  }
+});
+
+
+// === 공통 header & footer 자동 삽입 ===
+window.addEventListener("DOMContentLoaded", () => {
+  // 헤더
+  if (document.getElementById('header')) {
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+
+        // 햄버거 메뉴 작동!
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+  }
+
+  // 푸터
+  if (document.getElementById('footer')) {
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  }
 });

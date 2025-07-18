@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1:1 문의 게시판</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <style>
+    .inquiry-board {
+      max-width: 900px;
+      margin: 80px auto;
+      background: #111;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 30px;
+      border-radius: 12px;
+    }
+    .inquiry-board h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .board-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .board-table th, .board-table td {
+      padding: 14px;
+      border-bottom: 1px solid #333;
+      text-align: center;
+    }
+    .board-table th {
+      background: #222;
+      color: #ddd;
+    }
+    .board-table tr:hover {
+      background: #222;
+      cursor: pointer;
+    }
+    .status {
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .status.done { color: #2ecc71; }
+    .status.wait { color: #f39c12; }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+<div class="info-subnav">
+  <div class="container">
+    <a href="index.html" class="active">1:1 문의</a>
+    <a href="qna.html">Q&A</a>
+    <a href="event.html">이벤트</a>
+  </div>
+</div>
+  <main class="inquiry-board">
+    <h2>1:1 문의 게시판</h2>
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+          <th>처리상태</th>
+        </tr>
+      </thead>
+      <tbody id="board-body">
+        <!-- JS로 삽입 -->
+      </tbody>
+    </table>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/script.js"></script>
+  <script>
+    const titles = [
+      "예약 확인 부탁드립니다", "결제 오류 문의", "취소하고 싶어요", "이벤트 문의", "출발일 변경 가능할까요?",
+      "회원 탈퇴 관련", "쿠폰 사용이 안돼요", "여권 만료 시 예약 취소?", "위약금 문의", "숙소 정보 오류 신고",
+      "일정표가 안 보여요", "포인트 적립 확인 요청", "모바일 앱 문제", "항공권 변경", "현지 가이드 연락처?"
+    ];
+    const names = ["김민지", "박철수", "이영희", "최재훈", "정하늘", "유승호", "홍길동", "강지민", "서윤아", "배지훈"];
+    
+    const tbody = document.getElementById("board-body");
+    const postCount = Math.floor(Math.random() * 6) + 15; // 15~20개 랜덤
+    const today = new Date();
+
+    for(let i = 0; i < postCount; i++) {
+      const title = titles[Math.floor(Math.random() * titles.length)];
+      const name = names[Math.floor(Math.random() * names.length)];
+      const date = new Date(today.getTime() - Math.random() * 20 * 24 * 60 * 60 * 1000); // 최근 20일 이내 날짜
+      const dateStr = date.toISOString().slice(0, 10);
+      const status = Math.random() > 0.5 ? '답변완료' : '대기중';
+      const statusClass = status === '답변완료' ? 'done' : 'wait';
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${postCount - i}</td>
+        <td>${title}</td>
+        <td>${name}</td>
+        <td>${dateStr}</td>
+        <td><span class="status ${statusClass}">${status}</span></td>
+      `;
+      row.onclick = () => alert("상세 내용은 관리자만 열람 가능합니다.");
+      tbody.appendChild(row);
+    }
+  </script>
+</body>
+</html>
+
+
+  <script src="../js/script.js"></script>
+
+  <script>
+    // 헤더 & 푸터 로딩
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+
+        // 햄버거 메뉴 기능도 여기에!
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>

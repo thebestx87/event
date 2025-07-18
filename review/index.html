@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여행 후기 - TRIP</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .review-section {
+      padding: 60px 20px;
+    }
+
+    .review-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .review-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .review-content {
+      padding: 16px;
+    }
+
+    .summary {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: #f0f0f0;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    .rating {
+      font-size: 0.9rem;
+      color: #00ffb3;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+ <main class="container">
+    <h1>100% 실제 고객 리뷰📝</h1>
+    <p>당신의 리뷰를 사랑합니다.</p>
+    <!-- 여기에 카드, 이미지, 내용 등 넣기 -->
+  </main>
+  <section class="review-section">
+    <div class="review-grid" id="reviewContainer">
+      <!-- 랜덤 후기 카드 삽입 -->
+    </div>
+  </section>
+  <div id="footer"></div>
+<script src="../js/script.js"></script>
+  <script>
+    const images = [
+      "https://source.unsplash.com/400x300/?beach",
+      "https://source.unsplash.com/400x300/?paris",
+      "https://source.unsplash.com/400x300/?tokyo",
+      "https://source.unsplash.com/400x300/?newyork",
+      "https://source.unsplash.com/400x300/?bali",
+      "https://source.unsplash.com/400x300/?maldives",
+      "https://source.unsplash.com/400x300/?vietnam",
+      "https://source.unsplash.com/400x300/?jeju",
+      "https://source.unsplash.com/400x300/?london",
+      "https://source.unsplash.com/400x300/?travel"
+    ];
+
+    const reviews = [
+      { summary: "가족과 함께한 따뜻한 시간이었어요. 너무 즐거웠습니다 ☀️", meta: "[출발확정] 0424풀엔쇼핑전용 | 품격/남태평양", rating: "★ 4.8 (231)" },
+      { summary: "백두산 뷰는 미쳤습니다. 진짜 강추해요!", meta: "[출발확정] 백두산+쇼핑 | 노옵션", rating: "★ 4.6 (137)" },
+      { summary: "유럽여행 처음인데 완전 대만족이에요!!", meta: "[출발확정] 스페인+포르투갈 11일", rating: "★ 4.9 (324)" },
+      { summary: "중국 걱정 많았는데 너무 좋았어요!", meta: "[특가] 하이난 자유여행", rating: "★ 4.7 (180)" },
+      { summary: "수영장 리조트 가성비 진짜 인정합니다!", meta: "[0519슈퍼특별] 아침출발/에어서울", rating: "★ 4.9 (115)" },
+      { summary: "제주도에서도 이런 뷰가 있다니 감동 😭", meta: "[제주도] 힐링 패키지 3일", rating: "★ 4.8 (210)" },
+      { summary: "현지 가이드 친절하고 음식도 맛있어요", meta: "[다낭] 리조트+시내관광 포함", rating: "★ 4.6 (90)" },
+      { summary: "에펠탑 야경은 아직도 잊지 못해요..", meta: "[파리] 감성 자유여행", rating: "★ 4.7 (301)" },
+      { summary: "가성비 최고 일정, 가족 만족도 최상!", meta: "[홍콩+마카오] 4일 패키지", rating: "★ 4.8 (173)" },
+      { summary: "도쿄 야경 정말 말도 안됩니다ㅠㅠ", meta: "[도쿄] 시부야 감성투어", rating: "★ 4.7 (290)" }
+    ];
+
+    const shuffled = reviews.sort(() => 0.5 - Math.random());
+    const container = document.getElementById("reviewContainer");
+
+    shuffled.forEach((review, i) => {
+      const img = images[i % images.length];
+      container.innerHTML += `
+        <div class="review-card">
+          <img src="${img}" alt="후기 이미지">
+          <div class="review-content">
+            <p class="summary">${review.summary}</p>
+            <p class="meta">${review.meta}</p>
+            <p class="rating">${review.rating}</p>
+          </div>
+        </div>
+      `;
+    });
+    
+ 
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+    
+  </script>
+</body>
+</html>

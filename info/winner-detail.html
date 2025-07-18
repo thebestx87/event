@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>당첨자 발표 - TRIP</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .winner-container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 20px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0af;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    li.highlight {
+      color: #0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="winner-container">
+    <h2>TRIP 6월 후기 이벤트 당첨자 명단</h2>
+    <p>
+        당첨되신분들 축하드립니다.
+        당첨되신분들은 개별번호로 연락 드리겠습니다.
+    </p>
+    <ul>
+      <li>010-****-4381</li>
+      <li>010-****-9023</li>
+      <li class="highlight">010-****-9965</li> <!-- 진짜 느낌 강조 -->
+      <li>010-****-7314</li>
+      <li>010-****-5810</li>
+      <li>010-****-8122</li>
+      <li>010-****-1199</li>
+      <li>010-****-3665</li>
+      <li>010-****-7523</li>
+      <li>010-****-6900</li>
+    </ul>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/script.js"></script>
+     
+  <script>
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        // 하나만 열리게 하고 싶다면 아래 주석 제거
+        items.forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+    window.addEventListener("DOMContentLoaded", () => {
+  // 헤더
+  if (document.getElementById('header')) {
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+
+        // 햄버거 메뉴 작동!
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+  }
+
+  // 푸터
+  if (document.getElementById('footer')) {
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  }
+});
+
+  </script>
+</body>
+</html>

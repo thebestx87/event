@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIP - 당신의 특별한 여행</title>
+  <meta name="description" content="TRIP - 전 세계 어디든 당신의 특별한 여행을 찾아보세요!">
+  <link rel="icon" href="images/favicon.png" />
+  <meta property="og:title" content="TRIP - 당신의 특별한 여행">
+  <meta property="og:description" content="전 세계 어디든 당신의 특별한 여행을 TRIP과 함께!">
+  <meta property="og:image" content="images/og-image.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main class="container">
+    <h1>여행지 소개</h1>
+    <p>당신의 다음 여행지는 어디인가요?</p>
+    <!-- 여기에 카드, 이미지, 내용 등 넣기 -->
+  </main>
+
+  <div id="footer"></div>
+<script src="../js/script.js"></script>
+  <script>
+    fetch('../common/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav ul");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("show");
+          });
+        }
+      });
+
+    fetch('../common/footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+
+ 
+    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+      
+    </body>
+</html>
